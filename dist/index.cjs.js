@@ -776,11 +776,11 @@ var InactiveButton = styled__default['default'](Button)(templateObject_1$9 || (t
     return theme.colors[colorKey];
 });
 var ButtonMenuItem = function (_a) {
-    var _b = _a.isActive, isActive = _b === void 0 ? false : _b, _c = _a.variant, variant = _c === void 0 ? variants.PRIMARY : _c, as = _a.as, props = __rest(_a, ["isActive", "variant", "as"]);
+    var _b = _a.isActive, isActive = _b === void 0 ? false : _b, _c = _a.variant, variant = _c === void 0 ? variants.TERTIARY : _c, as = _a.as, props = __rest(_a, ["isActive", "variant", "as"]);
     if (!isActive) {
         return (React__default['default'].createElement(InactiveButton, __assign({ forwardedAs: as, variant: "tertiary", colorKey: variant === variants.PRIMARY ? "primary" : "textSubtle" }, props)));
     }
-    return React__default['default'].createElement(Button, __assign({ as: as, variant: variant }, props));
+    return React__default['default'].createElement(Button, __assign({ as: as, variant: "tertiary" }, props));
 };
 var templateObject_1$9;
 
@@ -3060,7 +3060,7 @@ var baseColors = {
 var brandColors = {
     binance: "#F0B90B",
 };
-var lightColors = __assign(__assign(__assign({}, baseColors), brandColors), { background: "#FAF9FA", backgroundDisabled: "#E9EAEB", contrast: "#191326", invertedContrast: "#FFFFFF", input: "#eeeaf4", inputSecondary: "#d7caec", tertiary: "#EFF4F5", text: "#452A7A", textDisabled: "#BDC2C4", textSubtle: "#8f80ba", borderColor: "#E9EAEB", card: "#FFFFFF", gradients: {
+var lightColors = __assign(__assign(__assign({}, baseColors), brandColors), { background: "#FAF9FA", backgroundDisabled: "#E9EAEB", contrast: "#191326", invertedContrast: "#FFFFFF", input: "#eeeaf4", inputSecondary: "#d7caec", tertiary: "#EEB825", text: "#452A7A", textDisabled: "#BDC2C4", textSubtle: "#8f80ba", borderColor: "#E9EAEB", card: "#FFFFFF", gradients: {
         bubblegum: "linear-gradient(139.73deg, #E6FDFF 0%, #F3EFFF 100%)",
     } });
 var darkColors = __assign(__assign(__assign({}, baseColors), brandColors), { secondary: "#9A6AFF", background: "#100C18", backgroundDisabled: "#3c3742", contrast: "#FFFFFF", invertedContrast: "#191326", input: "#000000", inputSecondary: "#66578D", primaryDark: "#0098A1", tertiary: "#EEB825", text: "#EAE2FC", textDisabled: "#666171", textSubtle: "#FFFFFF", borderColor: "#524B63", card: "#000000", gradients: {
