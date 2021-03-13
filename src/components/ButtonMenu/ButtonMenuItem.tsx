@@ -19,7 +19,7 @@ const InactiveButton: PolymorphicComponent<InactiveButtonProps, "button"> = styl
 
 const ButtonMenuItem: PolymorphicComponent<ButtonMenuItemProps, "button"> = ({
   isActive = false,
-  variant = variants.PRIMARY,
+  variant = variants.TERTIARY,
   as,
   ...props
 }: ButtonMenuItemProps) => {
@@ -34,7 +34,7 @@ const ButtonMenuItem: PolymorphicComponent<ButtonMenuItemProps, "button"> = ({
     );
   }
 
-  return <Button as={as} variant={variant} {...props} />;
+  return <Button as={as} variant="tertiary" {...props} />;
 };
 
 export default ButtonMenuItem;
