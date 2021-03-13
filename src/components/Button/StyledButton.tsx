@@ -20,10 +20,8 @@ const getDisabledStyles = ({ isLoading, theme }: ThemedButtonProps) => {
   return `
     &:disabled,
     &.pancake-button--disabled {
-      background-color: ${theme.colors.backgroundDisabled};
-      border-color: ${theme.colors.backgroundDisabled};
+      opacity: 0.65;
       box-shadow: none;
-      color: ${theme.colors.textDisabled};
       cursor: not-allowed;
     }
   `;
@@ -60,11 +58,11 @@ const StyledButton = styled.button<BaseButtonProps>`
   transition: background-color 0.2s;
 
   &:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
-    opacity: 0.65;
+    /* opacity: 0.65; */
   }
 
   &:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
-    opacity: 0.85;
+    /* opacity: 0.85; */
   }
 
   ${getDisabledStyles}

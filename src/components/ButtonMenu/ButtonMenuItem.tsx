@@ -14,6 +14,7 @@ const InactiveButton: PolymorphicComponent<InactiveButtonProps, "button"> = styl
   color: ${({ theme, colorKey }) => theme.colors[colorKey]};
   &:hover:not(:disabled):not(:active) {
     background-color: white;
+    opacity: 1;
   }
 `;
 
