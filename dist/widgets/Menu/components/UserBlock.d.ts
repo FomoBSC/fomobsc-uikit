@@ -1,6 +1,8 @@
 import React from "react";
 import { Login } from "../../WalletModal/types";
+import { Profile } from "../types";
 interface Props {
+    profile?: Profile;
     account?: string;
     login: Login;
     logout: () => void;

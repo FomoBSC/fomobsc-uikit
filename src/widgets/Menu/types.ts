@@ -7,10 +7,16 @@ export interface LangType {
 
 export interface Profile {
   username?: string;
+  affiliateAddress?: string;
+  affiliateName?: string;
+  valid?: boolean
+
   image?: string;
-  profileLink: string;
-  noProfileLink: string;
+  profileLink?: string;
+  noProfileLink?: string;
   showPip?: boolean;
+  /*
+  */
 }
 
 export interface PushedProps {

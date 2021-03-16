@@ -12,6 +12,7 @@ const StyleButton = styled(Text).attrs({ role: "button" })`
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.colors.primary};
+  font-size: 12px;
 `;
 
 const Tooltip = styled.div<{ isTooltipDisplayed: boolean }>`

@@ -48,8 +48,10 @@ const StyledButton = styled.button<BaseButtonProps>`
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
+  height: 32px;
+  color: black !important;
   justify-content: center;
   letter-spacing: 0.03em;
   line-height: 1;

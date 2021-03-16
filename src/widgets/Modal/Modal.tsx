@@ -15,8 +15,7 @@ interface Props extends InjectedProps {
 
 const StyledModal = styled.div`
   background: ${({ theme }) => theme.modal.background};
-  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);
-  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  border: 1px solid rgb(238, 184, 37);
   border-radius: 32px;
   width: 100%;
   z-index: ${({ theme }) => theme.zIndices.modal};
@@ -33,12 +32,21 @@ const ModalHeader = styled.div`
   align-items: center;
   border-bottom: 1px solid #e9eaeb;
   align-items: center;
-  padding: 12px 24px;
+  color: white;
+  font-size: 16px;
+  padding: 0px 12px;
+  padding-left: 24px;
 `;
 
 const ModalTitle = styled(Flex)`
   align-items: center;
   flex: 1;
+`;
+
+const StyledHeading = styled(Heading)`
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
 `;
 
 const Modal: React.FC<Props> = ({
@@ -57,7 +65,7 @@ const Modal: React.FC<Props> = ({
             <ArrowBackIcon color="primary" />
           </IconButton>
         )}
-        <Heading>{title}</Heading>
+        <StyledHeading>{title}</StyledHeading>
       </ModalTitle>
       {!hideCloseButton && (
         <IconButton variant="text" onClick={onDismiss} aria-label="Close the dialog">
