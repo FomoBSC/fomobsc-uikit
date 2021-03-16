@@ -3,7 +3,7 @@ import { useModal } from "../Modal";
 import ConnectModal from "./ConnectModal";
 import AccountModal from "./AccountModal";
 import { Login } from "./types";
-import { Profile } from "../Menu/types"
+import { Profile } from "../Menu/types";
 
 interface ReturnType {
   onPresentConnectModal: () => void;

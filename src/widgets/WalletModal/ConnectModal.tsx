@@ -31,10 +31,7 @@ const ConnectModal: React.FC<Props> = ({ login, onDismiss = () => null }) => (
         mb={index < config.length - 1 ? "8px" : "0"}
       />
     ))}
-    <HelpLink
-      href="https://academy.binance.com/en/articles/how-to-get-started-with-binance-smart-chain-bsc"
-      external
-    >
+    <HelpLink href="https://academy.binance.com/en/articles/how-to-get-started-with-binance-smart-chain-bsc" external>
       <HelpIcon color="primary" mr="6px" />
       Learn how to connect
     </HelpLink>

@@ -14,7 +14,7 @@ const SocialLinks: React.FC = () => (
       const Icon = Icons[social.icon];
       const iconProps = { width: "28px", color: "tertiary", style: { cursor: "pointer" } };
       const mr = index < socials.length - 1 ? "16px" : 0;
-      
+
       return (
         <Link external key={social.label} href={social.href} aria-label={social.label} mr={mr}>
           <Icon {...iconProps} />

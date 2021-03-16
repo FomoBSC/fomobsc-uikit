@@ -7,7 +7,7 @@ import Flex from "../../components/Box/Flex";
 import { Modal } from "../Modal";
 import CopyToClipboard from "./CopyToClipboard";
 import { connectorLocalStorageKey } from "./config";
-import { Profile } from "../Menu/types"
+import { Profile } from "../Menu/types";
 
 interface Props {
   account: string;
@@ -19,15 +19,14 @@ interface Props {
 const StyledButton = styled(Button)`
   background: black;
   color: white !important;
-  border: 1px solid #EEB825;
+  border: 1px solid #eeb825;
 `;
 
 const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = () => null }) => {
-
   const [isTooltipDisplayed, setIsTooltipDisplayed] = useState(false);
-  const title = !profile ? 'Your Wallet' : profile.username
+  const title = !profile ? "Your Wallet" : profile.username;
   return (
-    <Modal title={title ? title : 'Your Wallet'} onDismiss={onDismiss}>
+    <Modal title={title ? title : "Your Wallet"} onDismiss={onDismiss}>
       <Text
         fontSize="14px"
         color="white"
@@ -48,7 +47,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
         </LinkExternal>
         <CopyToClipboard toCopy={account}>Copy Address</CopyToClipboard>
       </Flex>
-      { profile && profile.affiliateAddress != '0x0000000000000000000000000000000000000000' && 
+      {profile && profile.affiliateAddress != "0x0000000000000000000000000000000000000000" && (
         <>
           <Text
             fontSize="14px"
@@ -87,7 +86,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
             <CopyToClipboard toCopy={account}>Copy Address</CopyToClipboard>
           </Flex>
         </>
-      }
+      )}
       <Flex mb="16px" justifyContent="center">
         <Button
           height="32px"
@@ -103,7 +102,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
             }
           }}
         >
-          { isTooltipDisplayed ? 'Copied!' : 'Copy Affiliate Link' }
+          {isTooltipDisplayed ? "Copied!" : "Copy Affiliate Link"}
         </Button>
       </Flex>
       <Flex justifyContent="center">
@@ -120,7 +119,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
         </StyledButton>
       </Flex>
     </Modal>
-  )
+  );
 };
 
 export default AccountModal;
