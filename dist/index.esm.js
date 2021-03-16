@@ -2446,7 +2446,7 @@ var socials = [
     {
         label: "Telegram",
         icon: "TelegramIcon",
-        href: "https://t.me/fomobsc"
+        href: "https://t.me/fomobsc",
     },
     {
         label: "Twitter",
@@ -2817,27 +2817,26 @@ var CopyToClipboard = function (_a) {
 };
 var templateObject_1$J, templateObject_2$f;
 
-var StyledButton$1 = styled(Button)(templateObject_1$K || (templateObject_1$K = __makeTemplateObject(["\n  background: black;\n  color: white !important;\n  border: 1px solid #EEB825;\n"], ["\n  background: black;\n  color: white !important;\n  border: 1px solid #EEB825;\n"])));
+var StyledButton$1 = styled(Button)(templateObject_1$K || (templateObject_1$K = __makeTemplateObject(["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"], ["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"])));
 var AccountModal = function (_a) {
     var account = _a.account, profile = _a.profile, logout = _a.logout, _b = _a.onDismiss, onDismiss = _b === void 0 ? function () { return null; } : _b;
     var _c = useState(false), isTooltipDisplayed = _c[0], setIsTooltipDisplayed = _c[1];
-    var title = !profile ? 'Your Wallet' : profile.username;
-    return (React.createElement(Modal, { title: title ? title : 'Your Wallet', onDismiss: onDismiss },
+    var title = !profile ? "Your Wallet" : profile.username;
+    return (React.createElement(Modal, { title: title ? title : "Your Wallet", onDismiss: onDismiss },
         React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Your Address :"),
         React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, account),
         React.createElement(Flex, { mb: "32px" },
             React.createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
             React.createElement(CopyToClipboard, { toCopy: account }, "Copy Address")),
-        profile && profile.affiliateAddress != '0x0000000000000000000000000000000000000000' &&
-            React.createElement(React.Fragment, null,
-                React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Username :"),
-                React.createElement(Flex, { mb: "32px" },
-                    React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateName)),
-                React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Address :"),
-                React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateAddress),
-                React.createElement(Flex, { mb: "32px" },
-                    React.createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
-                    React.createElement(CopyToClipboard, { toCopy: account }, "Copy Address"))),
+        profile && profile.affiliateAddress != "0x0000000000000000000000000000000000000000" && (React.createElement(React.Fragment, null,
+            React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Username :"),
+            React.createElement(Flex, { mb: "32px" },
+                React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateName)),
+            React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Address :"),
+            React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateAddress),
+            React.createElement(Flex, { mb: "32px" },
+                React.createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
+                React.createElement(CopyToClipboard, { toCopy: account }, "Copy Address")))),
         React.createElement(Flex, { mb: "16px", justifyContent: "center" },
             React.createElement(Button, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
                     if (navigator.clipboard) {
@@ -2847,7 +2846,7 @@ var AccountModal = function (_a) {
                             setIsTooltipDisplayed(false);
                         }, 1000);
                     }
-                } }, isTooltipDisplayed ? 'Copied!' : 'Copy Affiliate Link')),
+                } }, isTooltipDisplayed ? "Copied!" : "Copy Affiliate Link")),
         React.createElement(Flex, { justifyContent: "center" },
             React.createElement(StyledButton$1, { height: "32px", width: "100%", onClick: function () {
                     logout();

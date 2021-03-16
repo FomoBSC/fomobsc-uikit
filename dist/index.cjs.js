@@ -2459,7 +2459,7 @@ var socials = [
     {
         label: "Telegram",
         icon: "TelegramIcon",
-        href: "https://t.me/fomobsc"
+        href: "https://t.me/fomobsc",
     },
     {
         label: "Twitter",
@@ -2830,27 +2830,26 @@ var CopyToClipboard = function (_a) {
 };
 var templateObject_1$J, templateObject_2$f;
 
-var StyledButton$1 = styled__default['default'](Button)(templateObject_1$K || (templateObject_1$K = __makeTemplateObject(["\n  background: black;\n  color: white !important;\n  border: 1px solid #EEB825;\n"], ["\n  background: black;\n  color: white !important;\n  border: 1px solid #EEB825;\n"])));
+var StyledButton$1 = styled__default['default'](Button)(templateObject_1$K || (templateObject_1$K = __makeTemplateObject(["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"], ["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"])));
 var AccountModal = function (_a) {
     var account = _a.account, profile = _a.profile, logout = _a.logout, _b = _a.onDismiss, onDismiss = _b === void 0 ? function () { return null; } : _b;
     var _c = React.useState(false), isTooltipDisplayed = _c[0], setIsTooltipDisplayed = _c[1];
-    var title = !profile ? 'Your Wallet' : profile.username;
-    return (React__default['default'].createElement(Modal, { title: title ? title : 'Your Wallet', onDismiss: onDismiss },
+    var title = !profile ? "Your Wallet" : profile.username;
+    return (React__default['default'].createElement(Modal, { title: title ? title : "Your Wallet", onDismiss: onDismiss },
         React__default['default'].createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Your Address :"),
         React__default['default'].createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, account),
         React__default['default'].createElement(Flex, { mb: "32px" },
             React__default['default'].createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
             React__default['default'].createElement(CopyToClipboard, { toCopy: account }, "Copy Address")),
-        profile && profile.affiliateAddress != '0x0000000000000000000000000000000000000000' &&
-            React__default['default'].createElement(React__default['default'].Fragment, null,
-                React__default['default'].createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Username :"),
-                React__default['default'].createElement(Flex, { mb: "32px" },
-                    React__default['default'].createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateName)),
-                React__default['default'].createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Address :"),
-                React__default['default'].createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateAddress),
-                React__default['default'].createElement(Flex, { mb: "32px" },
-                    React__default['default'].createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
-                    React__default['default'].createElement(CopyToClipboard, { toCopy: account }, "Copy Address"))),
+        profile && profile.affiliateAddress != "0x0000000000000000000000000000000000000000" && (React__default['default'].createElement(React__default['default'].Fragment, null,
+            React__default['default'].createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Username :"),
+            React__default['default'].createElement(Flex, { mb: "32px" },
+                React__default['default'].createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateName)),
+            React__default['default'].createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Address :"),
+            React__default['default'].createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateAddress),
+            React__default['default'].createElement(Flex, { mb: "32px" },
+                React__default['default'].createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
+                React__default['default'].createElement(CopyToClipboard, { toCopy: account }, "Copy Address")))),
         React__default['default'].createElement(Flex, { mb: "16px", justifyContent: "center" },
             React__default['default'].createElement(Button, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
                     if (navigator.clipboard) {
@@ -2860,7 +2859,7 @@ var AccountModal = function (_a) {
                             setIsTooltipDisplayed(false);
                         }, 1000);
                     }
-                } }, isTooltipDisplayed ? 'Copied!' : 'Copy Affiliate Link')),
+                } }, isTooltipDisplayed ? "Copied!" : "Copy Affiliate Link")),
         React__default['default'].createElement(Flex, { justifyContent: "center" },
             React__default['default'].createElement(StyledButton$1, { height: "32px", width: "100%", onClick: function () {
                     logout();
