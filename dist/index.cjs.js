@@ -2848,8 +2848,8 @@ var AccountModal = function (_a) {
             React__default['default'].createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Address :"),
             React__default['default'].createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateAddress),
             React__default['default'].createElement(Flex, { mb: "32px" },
-                React__default['default'].createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
-                React__default['default'].createElement(CopyToClipboard, { toCopy: account }, "Copy Address")))),
+                React__default['default'].createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + profile.affiliateAddress, mr: "16px" }, "View on BscScan"),
+                React__default['default'].createElement(CopyToClipboard, { toCopy: profile.affiliateAddress ? profile.affiliateAddress : '' }, "Copy Address")))),
         React__default['default'].createElement(Flex, { mb: "16px", justifyContent: "center" },
             React__default['default'].createElement(Button, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
                     if (navigator.clipboard) {

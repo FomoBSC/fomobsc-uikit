@@ -80,10 +80,10 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
             {profile.affiliateAddress}
           </Text>
           <Flex mb="32px">
-            <LinkExternal fontSize="12px" small href={`https://bscscan.com/address/${account}`} mr="16px">
+            <LinkExternal fontSize="12px" small href={`https://bscscan.com/address/${profile.affiliateAddress}`} mr="16px">
               View on BscScan
             </LinkExternal>
-            <CopyToClipboard toCopy={account}>Copy Address</CopyToClipboard>
+            <CopyToClipboard toCopy={profile.affiliateAddress ? profile.affiliateAddress : ''}>Copy Address</CopyToClipboard>
           </Flex>
         </>
       )}
