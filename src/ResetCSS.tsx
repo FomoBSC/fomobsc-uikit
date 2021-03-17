@@ -70,10 +70,10 @@ const ResetCSS = createGlobalStyle`
   }
   /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 3px;
   }
   ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.textSubtle}; 
+    background: #EEB825; 
     border-radius: 8px;
   }
   ::-webkit-scrollbar-track {
