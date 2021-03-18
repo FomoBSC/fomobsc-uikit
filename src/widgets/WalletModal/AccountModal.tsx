@@ -25,6 +25,7 @@ const StyledButton = styled(Button)`
 const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = () => null }) => {
   const [isTooltipDisplayed, setIsTooltipDisplayed] = useState(false);
   const title = !profile ? "Your Wallet" : profile.username;
+  
   return (
     <Modal title={title ? title : "Your Wallet"} onDismiss={onDismiss}>
       <Text
@@ -47,7 +48,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
         </LinkExternal>
         <CopyToClipboard toCopy={account}>Copy Address</CopyToClipboard>
       </Flex>
-      {profile && profile.affiliateAddress != "" && profile.affiliateAddress != "0x0000000000000000000000000000000000000000" && (
+      {profile && profile.affiliateAddress !== undefined && (
         <>
           <Text
             fontSize="14px"
