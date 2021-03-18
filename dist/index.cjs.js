@@ -2574,9 +2574,7 @@ var PanelBody = function (_a) {
     var location = reactRouterDom.useLocation();
     // Close the menu when a user clicks a link on mobile
     var handleClick = isMobile ? function () { return pushNav(false); } : undefined;
-    console.log(Icons);
     return (React__default['default'].createElement(Container$3, null, links.map(function (entry) {
-        console.log(entry.icon);
         var Icon = Icons[entry.icon];
         var iconElement = React__default['default'].createElement(Icon, { width: "24px", mr: "8px" });
         var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
