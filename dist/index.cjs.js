@@ -2859,7 +2859,7 @@ var AccountModal = function (_a) {
         React__default['default'].createElement(Flex, { mb: "32px" },
             React__default['default'].createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
             React__default['default'].createElement(CopyToClipboard, { toCopy: account }, "Copy Address")),
-        profile && profile.affiliateAddress != "0x0000000000000000000000000000000000000000" && (React__default['default'].createElement(React__default['default'].Fragment, null,
+        profile && profile.affiliateAddress != "" && profile.affiliateAddress != "0x0000000000000000000000000000000000000000" && (React__default['default'].createElement(React__default['default'].Fragment, null,
             React__default['default'].createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Username :"),
             React__default['default'].createElement(Flex, { mb: "32px" },
                 React__default['default'].createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateName)),
@@ -2897,7 +2897,7 @@ var UserBlock = function (_a) {
     var profile = _a.profile, account = _a.account, login = _a.login, logout = _a.logout;
     var _b = useWalletModal(login, logout, account, profile), onPresentConnectModal = _b.onPresentConnectModal, onPresentAccountModal = _b.onPresentAccountModal;
     var accountEllipsis = account ? account.substring(0, 4) + "..." + account.substring(account.length - 4) : null;
-    var profileEllipsis = profile && profile.username ? profile.username.substring(0, 8) + "..." : null;
+    var profileEllipsis = profile && profile.username ? profile.username.substring(0, 8) + "..." : accountEllipsis;
     return (React__default['default'].createElement("div", null, account ? (React__default['default'].createElement(Button, { scale: "sm", variant: "tertiary", onClick: function () {
             onPresentAccountModal();
         } }, profile ? profileEllipsis : accountEllipsis)) : (React__default['default'].createElement(Button, { scale: "sm", variant: "tertiary", onClick: function () {

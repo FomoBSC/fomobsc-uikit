@@ -2846,7 +2846,7 @@ var AccountModal = function (_a) {
         React.createElement(Flex, { mb: "32px" },
             React.createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
             React.createElement(CopyToClipboard, { toCopy: account }, "Copy Address")),
-        profile && profile.affiliateAddress != "0x0000000000000000000000000000000000000000" && (React.createElement(React.Fragment, null,
+        profile && profile.affiliateAddress != "" && profile.affiliateAddress != "0x0000000000000000000000000000000000000000" && (React.createElement(React.Fragment, null,
             React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Username :"),
             React.createElement(Flex, { mb: "32px" },
                 React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateName)),
@@ -2884,7 +2884,7 @@ var UserBlock = function (_a) {
     var profile = _a.profile, account = _a.account, login = _a.login, logout = _a.logout;
     var _b = useWalletModal(login, logout, account, profile), onPresentConnectModal = _b.onPresentConnectModal, onPresentAccountModal = _b.onPresentAccountModal;
     var accountEllipsis = account ? account.substring(0, 4) + "..." + account.substring(account.length - 4) : null;
-    var profileEllipsis = profile && profile.username ? profile.username.substring(0, 8) + "..." : null;
+    var profileEllipsis = profile && profile.username ? profile.username.substring(0, 8) + "..." : accountEllipsis;
     return (React.createElement("div", null, account ? (React.createElement(Button, { scale: "sm", variant: "tertiary", onClick: function () {
             onPresentAccountModal();
         } }, profile ? profileEllipsis : accountEllipsis)) : (React.createElement(Button, { scale: "sm", variant: "tertiary", onClick: function () {

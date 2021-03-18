@@ -47,7 +47,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
         </LinkExternal>
         <CopyToClipboard toCopy={account}>Copy Address</CopyToClipboard>
       </Flex>
-      {profile && profile.affiliateAddress != "0x0000000000000000000000000000000000000000" && (
+      {profile && profile.affiliateAddress != "" && profile.affiliateAddress != "0x0000000000000000000000000000000000000000" && (
         <>
           <Text
             fontSize="14px"
