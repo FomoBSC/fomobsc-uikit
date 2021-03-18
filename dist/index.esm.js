@@ -2848,7 +2848,7 @@ var AccountModal = function (_a) {
             React.createElement(CopyToClipboard, { toCopy: account }, "Copy Address")),
         profile && profile.affiliateAddress !== undefined && (React.createElement(React.Fragment, null,
             React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Username :"),
-            React.createElement(Flex, { mb: "32px" },
+            React.createElement(Flex, { mb: "24px" },
                 React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateName)),
             React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Address :"),
             React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, profile.affiliateAddress),

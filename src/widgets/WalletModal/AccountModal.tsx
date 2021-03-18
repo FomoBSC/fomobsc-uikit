@@ -57,7 +57,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
           >
             Affiliate Username :
           </Text>
-          <Flex mb="32px">
+          <Flex mb="24px">
             <Text
               fontSize="16px"
               color="tertiary"
