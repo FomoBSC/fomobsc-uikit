@@ -94,8 +94,13 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
           width="100%"
           variant="tertiary"
           onClick={() => {
-            if (navigator.clipboard) {
-              navigator.clipboard.writeText("fomobsc.com?affiliate=" + account);
+            var input = document.createElement('input');
+            input.setAttribute('value', "fomobsc.com?affiliate=" + account);
+            document.body.appendChild(input);
+            input.select();
+            var result = document.execCommand('copy');
+            document.body.removeChild(input);
+            if(result){
               setIsTooltipDisplayed(true);
               setTimeout(() => {
                 setIsTooltipDisplayed(false);

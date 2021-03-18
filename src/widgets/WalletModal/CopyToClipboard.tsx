@@ -36,8 +36,13 @@ const CopyToClipboard: React.FC<Props> = ({ toCopy, children, ...props }) => {
       small
       bold
       onClick={() => {
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(toCopy);
+        var input = document.createElement('input');
+        input.setAttribute('value', toCopy);
+        document.body.appendChild(input);
+        input.select();
+        var result = document.execCommand('copy');
+        document.body.removeChild(input);
+        if(result){
           setIsTooltipDisplayed(true);
           setTimeout(() => {
             setIsTooltipDisplayed(false);

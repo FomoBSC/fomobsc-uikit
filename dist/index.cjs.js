@@ -2834,8 +2834,13 @@ var CopyToClipboard = function (_a) {
     var toCopy = _a.toCopy, children = _a.children, props = __rest(_a, ["toCopy", "children"]);
     var _b = React.useState(false), isTooltipDisplayed = _b[0], setIsTooltipDisplayed = _b[1];
     return (React__default['default'].createElement(StyleButton, __assign({ small: true, bold: true, onClick: function () {
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(toCopy);
+            var input = document.createElement('input');
+            input.setAttribute('value', toCopy);
+            document.body.appendChild(input);
+            input.select();
+            var result = document.execCommand('copy');
+            document.body.removeChild(input);
+            if (result) {
                 setIsTooltipDisplayed(true);
                 setTimeout(function () {
                     setIsTooltipDisplayed(false);
@@ -2870,8 +2875,13 @@ var AccountModal = function (_a) {
                 React__default['default'].createElement(CopyToClipboard, { toCopy: profile.affiliateAddress ? profile.affiliateAddress : '' }, "Copy Address")))),
         React__default['default'].createElement(Flex, { mb: "16px", justifyContent: "center" },
             React__default['default'].createElement(Button, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
-                    if (navigator.clipboard) {
-                        navigator.clipboard.writeText("fomobsc.com?affiliate=" + account);
+                    var input = document.createElement('input');
+                    input.setAttribute('value', "fomobsc.com?affiliate=" + account);
+                    document.body.appendChild(input);
+                    input.select();
+                    var result = document.execCommand('copy');
+                    document.body.removeChild(input);
+                    if (result) {
                         setIsTooltipDisplayed(true);
                         setTimeout(function () {
                             setIsTooltipDisplayed(false);
