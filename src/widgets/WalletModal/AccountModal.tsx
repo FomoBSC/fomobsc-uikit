@@ -88,29 +88,42 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
           </Flex>
         </>
       ) */}
-      <Flex mb="16px" justifyContent="center">
-        <Button
-          height="32px"
-          width="100%"
-          variant="tertiary"
-          onClick={() => {
-            var input = document.createElement('input');
-            input.setAttribute('value', "fomobsc.com?affiliate=" + account);
-            document.body.appendChild(input);
-            input.select();
-            var result = document.execCommand('copy');
-            document.body.removeChild(input);
-            if(result){
-              setIsTooltipDisplayed(true);
-              setTimeout(() => {
-                setIsTooltipDisplayed(false);
-              }, 1000);
-            }
-          }}
-        >
-          {isTooltipDisplayed ? "Copied!" : "Copy Affiliate Link"}
-        </Button>
-      </Flex>
+      { profile && profile.username !== undefined ?
+        <Flex mb="16px" justifyContent="center">
+          <Button
+            height="32px"
+            width="100%"
+            variant="tertiary"
+            onClick={() => {
+              var input = document.createElement('input');
+              input.setAttribute('value', "fomobsc.com?affiliate=" + account);
+              document.body.appendChild(input);
+              input.select();
+              var result = document.execCommand('copy');
+              document.body.removeChild(input);
+              if(result){
+                setIsTooltipDisplayed(true);
+                setTimeout(() => {
+                  setIsTooltipDisplayed(false);
+                }, 1000);
+              }
+            }}
+          >
+            {isTooltipDisplayed ? "Copied!" : "Copy Affiliate Link"}
+          </Button>
+        </Flex>
+        :
+        <Flex mb="16px" justifyContent="center">
+          <Button
+            height="32px"
+            width="100%"
+            disabled={true}
+            variant="tertiary"
+          >
+            Register for Affiliate Link
+          </Button>
+        </Flex>
+      }
       <Flex justifyContent="center">
         <StyledButton
           height="32px"

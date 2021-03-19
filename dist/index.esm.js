@@ -2867,21 +2867,25 @@ var AccountModal = function (_a) {
         React.createElement(Flex, { mb: "32px" },
             React.createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
             React.createElement(CopyToClipboard, { toCopy: account }, "Copy Address")),
-        React.createElement(Flex, { mb: "16px", justifyContent: "center" },
-            React.createElement(Button, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
-                    var input = document.createElement('input');
-                    input.setAttribute('value', "fomobsc.com?affiliate=" + account);
-                    document.body.appendChild(input);
-                    input.select();
-                    var result = document.execCommand('copy');
-                    document.body.removeChild(input);
-                    if (result) {
-                        setIsTooltipDisplayed(true);
-                        setTimeout(function () {
-                            setIsTooltipDisplayed(false);
-                        }, 1000);
-                    }
-                } }, isTooltipDisplayed ? "Copied!" : "Copy Affiliate Link")),
+        profile && profile.username !== undefined ?
+            React.createElement(Flex, { mb: "16px", justifyContent: "center" },
+                React.createElement(Button, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
+                        var input = document.createElement('input');
+                        input.setAttribute('value', "fomobsc.com?affiliate=" + account);
+                        document.body.appendChild(input);
+                        input.select();
+                        var result = document.execCommand('copy');
+                        document.body.removeChild(input);
+                        if (result) {
+                            setIsTooltipDisplayed(true);
+                            setTimeout(function () {
+                                setIsTooltipDisplayed(false);
+                            }, 1000);
+                        }
+                    } }, isTooltipDisplayed ? "Copied!" : "Copy Affiliate Link"))
+            :
+                React.createElement(Flex, { mb: "16px", justifyContent: "center" },
+                    React.createElement(Button, { height: "32px", width: "100%", disabled: true, variant: "tertiary" }, "Register for Affiliate Link")),
         React.createElement(Flex, { justifyContent: "center" },
             React.createElement(StyledButton$1, { height: "32px", width: "100%", onClick: function () {
                     logout();
