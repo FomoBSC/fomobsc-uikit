@@ -21,7 +21,7 @@ export const links = [
   {
     label: "Farms",
     icon: "MediumIcon",
-    href: "/farms",
+    href: "https://exchange.pancakeswap.finance/#/pool",
   },
   {
     label: "Pools",

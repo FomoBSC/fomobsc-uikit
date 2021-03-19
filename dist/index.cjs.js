@@ -2392,7 +2392,7 @@ var links = [
     {
         label: "Farms",
         icon: "MediumIcon",
-        href: "/farms",
+        href: "https://exchange.pancakeswap.finance/#/pool",
     },
     {
         label: "Pools",
@@ -2574,7 +2574,12 @@ var MenuLink = function (_a) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     var Tag = isHttpLink ? "a" : reactRouterDom.NavLink;
     var props = isHttpLink ? { href: href } : { to: href };
-    return React__default['default'].createElement(Tag, __assign({}, props, otherProps));
+    if (isHttpLink) {
+        return React__default['default'].createElement(Tag, __assign({}, props, otherProps, { target: "_blank" }));
+    }
+    else {
+        return React__default['default'].createElement(Tag, __assign({}, props, otherProps));
+    }
 };
 
 var Icons = IconModule;
@@ -2585,6 +2590,7 @@ var PanelBody = function (_a) {
     // Close the menu when a user clicks a link on mobile
     var handleClick = isMobile ? function () { return pushNav(false); } : undefined;
     return (React__default['default'].createElement(Container$3, null, links.map(function (entry) {
+        console.log(entry.icon);
         var Icon = Icons[entry.icon];
         var iconElement = React__default['default'].createElement(Icon, { width: "24px", mr: "8px" });
         var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
