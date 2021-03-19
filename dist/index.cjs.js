@@ -1420,11 +1420,10 @@ var float = styled.keyframes(templateObject_2$8 || (templateObject_2$8 = __makeT
 var Container$1 = styled__default['default'].div(templateObject_3$2 || (templateObject_3$2 = __makeTemplateObject(["\n  position: relative;\n"], ["\n  position: relative;\n"])));
 styled__default['default'](Icon$O)(templateObject_4$1 || (templateObject_4$1 = __makeTemplateObject(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  animation: ", " 2s linear infinite;\n  transform: translate3d(0, 0, 0);\n"], ["\n  position: absolute;\n  top: 0;\n  left: 0;\n  animation: ", " 2s linear infinite;\n  transform: translate3d(0, 0, 0);\n"])), rotate$1);
 styled__default['default'](Icon$N)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  animation: ", " 6s ease-in-out infinite;\n  transform: translate3d(0, 0, 0);\n"], ["\n  animation: ", " 6s ease-in-out infinite;\n  transform: translate3d(0, 0, 0);\n"])), float);
-var logo = require("./fomo.gif");
 var Spinner = function (_a) {
     var _b = _a.size, size = _b === void 0 ? 100 : _b;
     return (React__default['default'].createElement(Container$1, null,
-        React__default['default'].createElement("img", { src: logo, width: size, alt: "Loading..." })));
+        React__default['default'].createElement("img", { src: "/images/fomo/spinner.gif", width: size, alt: "Loading..." })));
 };
 var templateObject_1$u, templateObject_2$8, templateObject_3$2, templateObject_4$1, templateObject_5;
 

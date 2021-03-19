@@ -42,11 +42,10 @@ const FloatingPanIcon = styled(PanIcon)`
   transform: translate3d(0, 0, 0);
 `;
 
-const logo =  require("./fomo.gif")
 const Spinner: React.FC<SpinnerProps> = ({ size = 100 }) => {
   return (
     <Container>
-      <img src={logo} width={size} alt="Loading..." />
+      <img src="/images/fomo/spinner.gif" width={size} alt="Loading..." />
     </Container> 
   );
 };
