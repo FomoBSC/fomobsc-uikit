@@ -14,7 +14,14 @@ interface Props {
 const UserBlock: React.FC<Props> = ({ profile, account, login, logout }) => {
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(login, logout, account, profile);
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null;
-  const profileEllipsis = profile && profile.username !== undefined ? `${profile.username.substring(0, 8)}...` : accountEllipsis;
+  let profileEllipsis = accountEllipsis;
+  if(profile && profile.username !== undefined){
+    if(profile.username.length < 9){
+      profileEllipsis = `${profile.username}`;
+    } else {
+      profileEllipsis = `${profile.username.substring(0, 8)}...`;
+    }
+  } 
   return (
     <div>
       {account ? (

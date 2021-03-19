@@ -48,7 +48,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
         </LinkExternal>
         <CopyToClipboard toCopy={account}>Copy Address</CopyToClipboard>
       </Flex>
-      {profile && profile.affiliateAddress !== undefined && (
+      { /* profile && profile.affiliateAddress !== undefined && (
         <>
           <Text
             fontSize="14px"
@@ -87,7 +87,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
             <CopyToClipboard toCopy={profile.affiliateAddress ? profile.affiliateAddress : ''}>Copy Address</CopyToClipboard>
           </Flex>
         </>
-      )}
+      ) */}
       <Flex mb="16px" justifyContent="center">
         <Button
           height="32px"
