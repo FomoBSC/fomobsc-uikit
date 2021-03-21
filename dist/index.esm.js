@@ -2569,7 +2569,7 @@ var MENU_HEIGHT = 64;
 var SIDEBAR_WIDTH_FULL = 240;
 var SIDEBAR_WIDTH_REDUCED = 56;
 
-var Wrapper$1 = styled.div(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  position: relative;\n  width: 100%;\n"], ["\n  position: relative;\n  width: 100%;\n"])));
+var Wrapper$1 = styled.div(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  position: relative;\n  width: 100%;\n  z-index: 1;\n"], ["\n  position: relative;\n  width: 100%;\n  z-index: 1;\n"])));
 var StyledNav = styled.nav(templateObject_2$d || (templateObject_2$d = __makeTemplateObject(["\n  position: fixed;\n  top: ", ";\n  left: 0;\n  right: 0;\n  transition: top 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: 8px;\n  padding-right: 16px;\n  width: 100%;\n  height: ", "px;\n  background-color: ", ";\n  border-bottom: solid 2px rgba(133, 133, 133, 0.2);\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n  max-width: 1200px;\n  margin-left: auto;\n  margin-right: auto;\n"], ["\n  position: fixed;\n  top: ", ";\n  left: 0;\n  right: 0;\n  transition: top 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: 8px;\n  padding-right: 16px;\n  width: 100%;\n  height: ", "px;\n  background-color: ", ";\n  border-bottom: solid 2px rgba(133, 133, 133, 0.2);\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n  max-width: 1200px;\n  margin-left: auto;\n  margin-right: auto;\n"])), function (_a) {
     var showMenu = _a.showMenu;
     return (showMenu ? 0 : "-" + MENU_HEIGHT + "px");
