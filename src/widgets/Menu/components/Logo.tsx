@@ -43,6 +43,7 @@ const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
 
   return (
     <Flex>
+      { /*
       <MenuButton aria-label="Toggle menu" onClick={togglePush}>
         {isPushed ? (
           <HamburgerCloseIcon width="24px" color="textSubtle" />
@@ -50,6 +51,7 @@ const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
           <HamburgerIcon width="24px" color="textSubtle" />
         )}
       </MenuButton>
+        */ }
       {isAbsoluteUrl ? (
         <StyledLink as="a" href={href} aria-label="FomoBSC home page">
           {innerLogo}

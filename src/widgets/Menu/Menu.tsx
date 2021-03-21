@@ -20,6 +20,7 @@ const StyledNav = styled.nav<{ showMenu: boolean }>`
   position: fixed;
   top: ${({ showMenu }) => (showMenu ? 0 : `-${MENU_HEIGHT}px`)};
   left: 0;
+  right: 0;
   transition: top 0.2s;
   display: flex;
   justify-content: space-between;
@@ -32,6 +33,9 @@ const StyledNav = styled.nav<{ showMenu: boolean }>`
   border-bottom: solid 2px rgba(133, 133, 133, 0.1);
   z-index: 20;
   transform: translate3d(0, 0, 0);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const BodyWrapper = styled.div`
@@ -44,12 +48,15 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
   transition: margin-top 0.2s;
   transform: translate3d(0, 0, 0);
-  max-width: 100%;
-
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  /*
   ${({ theme }) => theme.mediaQueries.nav} {
     margin-left: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
     max-width: ${({ isPushed }) => `calc(100% - ${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px)`};
   }
+  */
 `;
 
 const MobileOnlyOverlay = styled(Overlay)`
@@ -127,25 +134,9 @@ const Menu: React.FC<NavProps> = ({
           {/* {profile && <Avatar profile={profile} />} */}
         </Flex>
       </StyledNav>
-      <BodyWrapper>
-        <Panel
-          isPushed={isPushed}
-          isMobile={isMobile}
-          showMenu={showMenu}
-          isDark={isDark}
-          toggleTheme={toggleTheme}
-          langs={langs}
-          setLang={setLang}
-          currentLang={currentLang}
-          cakePriceUsd={cakePriceUsd}
-          pushNav={setIsPushed}
-          links={links}
-        />
-        <Inner isPushed={isPushed} showMenu={showMenu}>
-          {children}
-        </Inner>
-        <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation" />
-      </BodyWrapper>
+      <Inner isPushed={isPushed} showMenu={showMenu}>
+        {children}
+      </Inner>
     </Wrapper>
   );
 };
