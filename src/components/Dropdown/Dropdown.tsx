@@ -26,11 +26,12 @@ const DropdownContent = styled.div<{ position: Position }>`
   bottom: ${getBottom};
   background-color: ${({ theme }) => theme.nav.background};
   box-shadow: ${({ theme }) => theme.shadows.level1};
-  padding: 16px;
   max-height: 500px;
   overflow-y: auto;
   z-index: ${({ theme }) => theme.zIndices.dropdown};
   border-radius: ${({ theme }) => theme.radii.small};
+  border: 1px solid #EEB825;
+  padding: 0;
 `;
 
 const Container = styled.div`
