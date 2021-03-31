@@ -8,7 +8,6 @@ var styledSystem = require('styled-system');
 var get = require('lodash/get');
 var noop = require('lodash/noop');
 var debounce = require('lodash/debounce');
-var throttle = require('lodash/throttle');
 var reactRouterDom = require('react-router-dom');
 var reactTransitionGroup = require('react-transition-group');
 
@@ -19,7 +18,6 @@ var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 var get__default = /*#__PURE__*/_interopDefaultLegacy(get);
 var noop__default = /*#__PURE__*/_interopDefaultLegacy(noop);
 var debounce__default = /*#__PURE__*/_interopDefaultLegacy(debounce);
-var throttle__default = /*#__PURE__*/_interopDefaultLegacy(throttle);
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -2614,36 +2612,38 @@ var Menu = function (_a) {
     var isXl = useMatchBreakpoints().isXl;
     var isMobile = isXl === false;
     var _c = React.useState(!isMobile), isPushed = _c[0], setIsPushed = _c[1];
-    var _d = React.useState(true), showMenu = _d[0], setShowMenu = _d[1];
-    var refPrevOffset = React.useRef(window.pageYOffset);
-    React.useEffect(function () {
-        var handleScroll = function () {
-            var currentOffset = window.pageYOffset;
-            var isBottomOfPage = window.document.body.clientHeight === currentOffset + window.innerHeight;
-            var isTopOfPage = currentOffset === 0;
-            // Always show the menu when user reach the top
-            if (isTopOfPage) {
-                setShowMenu(true);
-            }
-            // Avoid triggering anything at the bottom because of layout shift
-            else if (!isBottomOfPage) {
-                if (currentOffset < refPrevOffset.current) {
-                    // Has scroll up
-                    setShowMenu(true);
-                }
-                else {
-                    // Has scroll down
-                    setShowMenu(false);
-                }
-            }
-            refPrevOffset.current = currentOffset;
-        };
-        var throttledHandleScroll = throttle__default['default'](handleScroll, 200);
-        window.addEventListener("scroll", throttledHandleScroll);
-        return function () {
-            window.removeEventListener("scroll", throttledHandleScroll);
-        };
+    var _d = React.useState(true), showMenu = _d[0]; _d[1];
+    React.useRef(window.pageYOffset);
+    /*
+    useEffect(() => {
+      const handleScroll = () => {
+        const currentOffset = window.pageYOffset;
+        const isBottomOfPage = window.document.body.clientHeight === currentOffset + window.innerHeight;
+        const isTopOfPage = currentOffset === 0;
+        // Always show the menu when user reach the top
+        if (isTopOfPage) {
+          setShowMenu(true);
+        }
+        // Avoid triggering anything at the bottom because of layout shift
+        else if (!isBottomOfPage) {
+          if (currentOffset < refPrevOffset.current) {
+            // Has scroll up
+            setShowMenu(true);
+          } else {
+            // Has scroll down
+            setShowMenu(false);
+          }
+        }
+        refPrevOffset.current = currentOffset;
+      };
+      const throttledHandleScroll = throttle(handleScroll, 200);
+  
+      window.addEventListener("scroll", throttledHandleScroll);
+      return () => {
+        window.removeEventListener("scroll", throttledHandleScroll);
+      };
     }, []);
+    */
     // Find the home link if provided
     var homeLink = links.find(function (link) { return link.label === "Home"; });
     return (React__default['default'].createElement(Wrapper$1, null,

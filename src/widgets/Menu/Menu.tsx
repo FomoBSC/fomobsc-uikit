@@ -89,6 +89,7 @@ const Menu: React.FC<NavProps> = ({
   const [showMenu, setShowMenu] = useState(true);
   const refPrevOffset = useRef(window.pageYOffset);
 
+  /*
   useEffect(() => {
     const handleScroll = () => {
       const currentOffset = window.pageYOffset;
@@ -117,6 +118,7 @@ const Menu: React.FC<NavProps> = ({
       window.removeEventListener("scroll", throttledHandleScroll);
     };
   }, []);
+  */
 
   // Find the home link if provided
   const homeLink = links.find((link) => link.label === "Home");
