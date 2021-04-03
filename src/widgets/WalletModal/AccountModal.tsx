@@ -72,6 +72,11 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
     localStorage.setItem("FOMO_AFFILIATE", e.currentTarget.value);
   }
 
+  console.log(profile)
+  if(profile !== undefined){
+    console.log(profile.username)
+  }
+  console.log(profile && profile.username != "")
   return (
     <Modal title={title ? title : "Your Wallet"} onDismiss={onDismiss}>
       <Text

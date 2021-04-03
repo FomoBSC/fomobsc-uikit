@@ -2417,6 +2417,11 @@ var AccountModal = function (_a) {
         setAffiliate(e.currentTarget.value);
         localStorage.setItem("FOMO_AFFILIATE", e.currentTarget.value);
     };
+    console.log(profile);
+    if (profile !== undefined) {
+        console.log(profile.username);
+    }
+    console.log(profile && profile.username != "");
     return (React.createElement(Modal, { title: title ? title : "Your Wallet", onDismiss: onDismiss },
         React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Your Address :"),
         React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, account),
