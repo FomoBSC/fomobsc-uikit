@@ -2384,44 +2384,57 @@ var CopyToClipboard = function (_a) {
 };
 var templateObject_1$C, templateObject_2$c;
 
-var StyledButton$1 = styled(Button)(templateObject_1$D || (templateObject_1$D = __makeTemplateObject(["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"], ["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"])));
+styled(Button)(templateObject_1$D || (templateObject_1$D = __makeTemplateObject(["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"], ["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"])));
+var StyledInput = styled(Input)(templateObject_2$d || (templateObject_2$d = __makeTemplateObject(["\n  background: black;\n  color: white;\n  font-size: 14px;\n  height: 35px;\n  padding-right: 16px;\n  padding-left: 16px;\n  margin-bottom: 16px;\n  border: 2.5px solid #EEB825 !important;\n  boxShadow: none;\n  ::placeholder {\n    color: grey;\n    opacity: 0.75; /* Firefox */\n  }\n\n  :-ms-input-placeholder { /* Internet Explorer 10-11 */\n    color: grey;\n  }\n\n  ::-ms-input-placeholder { /* Microsoft Edge */\n    color: grey;\n  }\n"], ["\n  background: black;\n  color: white;\n  font-size: 14px;\n  height: 35px;\n  padding-right: 16px;\n  padding-left: 16px;\n  margin-bottom: 16px;\n  border: 2.5px solid #EEB825 !important;\n  boxShadow: none;\n  ::placeholder {\n    color: grey;\n    opacity: 0.75; /* Firefox */\n  }\n\n  :-ms-input-placeholder { /* Internet Explorer 10-11 */\n    color: grey;\n  }\n\n  ::-ms-input-placeholder { /* Microsoft Edge */\n    color: grey;\n  }\n"
+    /*
+      const [affiliate, setAffiliate] = useState(() => {
+        const stickyValue = window.localStorage.getItem(AFFILIATE_KEY);
+        return stickyValue !== null && stickyValue !== 'null'
+          ? stickyValue
+          : '';
+      })
+    */
+])));
+/*
+  const [affiliate, setAffiliate] = useState(() => {
+    const stickyValue = window.localStorage.getItem(AFFILIATE_KEY);
+    return stickyValue !== null && stickyValue !== 'null'
+      ? stickyValue
+      : '';
+  })
+*/
 var AccountModal = function (_a) {
     var account = _a.account, profile = _a.profile, logout = _a.logout, _b = _a.onDismiss, onDismiss = _b === void 0 ? function () { return null; } : _b;
-    var _c = useState(false), isTooltipDisplayed = _c[0], setIsTooltipDisplayed = _c[1];
+    var _c = useState(false); _c[0]; _c[1];
     var title = !profile ? "Your Wallet" : profile.username;
+    var _d = useState(!profile ? "" : profile.username), username = _d[0], setUsername = _d[1];
+    var _e = useState(!profile ? "" : profile.affiliateAddress), affiliate = _e[0], setAffiliate = _e[1];
+    var handleUsername = function (e) {
+        setUsername(e.currentTarget.value);
+        localStorage.setItem("FOMO_USER", e.currentTarget.value);
+    };
+    var handleAffiliate = function (e) {
+        setAffiliate(e.currentTarget.value);
+        localStorage.setItem("FOMO_AFFILIATE", e.currentTarget.value);
+    };
     return (React.createElement(Modal, { title: title ? title : "Your Wallet", onDismiss: onDismiss },
         React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Your Address :"),
         React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, account),
-        React.createElement(Flex, { mb: "32px" },
+        React.createElement(Flex, { mb: "24px" },
             React.createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
-            React.createElement(CopyToClipboard, { toCopy: account }, "Copy Address")),
-        profile && profile.username !== undefined ?
-            React.createElement(Flex, { mb: "16px", justifyContent: "center" },
-                React.createElement(Button, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
-                        var input = document.createElement('input');
-                        input.setAttribute('value', "fomobsc.com?affiliate=" + account);
-                        document.body.appendChild(input);
-                        input.select();
-                        var result = document.execCommand('copy');
-                        document.body.removeChild(input);
-                        if (result) {
-                            setIsTooltipDisplayed(true);
-                            setTimeout(function () {
-                                setIsTooltipDisplayed(false);
-                            }, 1000);
-                        }
-                    } }, isTooltipDisplayed ? "Copied!" : "Copy Affiliate Link"))
-            :
-                React.createElement(Flex, { mb: "16px", justifyContent: "center" },
-                    React.createElement(Button, { height: "32px", width: "100%", disabled: true, variant: "tertiary" }, "Register for Affiliate Link")),
+            React.createElement(CopyToClipboard, { toCopy: "fomobsc.com?affiliate=" + account }, "Copy Affiliate Link")),
+        React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Username :"),
+        React.createElement(StyledInput, { disabled: profile && profile.username != "", value: username, placeholder: "Username", onChange: handleUsername }),
+        React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Address :"),
+        React.createElement(StyledInput, { disabled: profile && profile.affiliateAddress != "", value: affiliate, placeholder: "Affiliate Address", onChange: handleAffiliate }),
         React.createElement(Flex, { justifyContent: "center" },
-            React.createElement(StyledButton$1, { height: "32px", width: "100%", onClick: function () {
+            React.createElement(Button, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
                     logout();
                     window.localStorage.removeItem(connectorLocalStorageKey);
                     onDismiss();
                 } }, "Logout"))));
 };
-var templateObject_1$D;
+var templateObject_1$D, templateObject_2$d;
 
 var useWalletModal = function (login, logout, account, profile) {
     var onPresentConnectModal = useModal(React.createElement(ConnectModal, { login: login }))[0];
@@ -2569,7 +2582,7 @@ var SIDEBAR_WIDTH_FULL = 240;
 var SIDEBAR_WIDTH_REDUCED = 56;
 
 var Wrapper$1 = styled.div(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  position: relative;\n  width: 100%;\n  z-index: 1;\n"], ["\n  position: relative;\n  width: 100%;\n  z-index: 1;\n"])));
-var StyledNav = styled.nav(templateObject_2$d || (templateObject_2$d = __makeTemplateObject(["\n  position: fixed;\n  top: ", ";\n  left: 0;\n  right: 0;\n  transition: top 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: 8px;\n  padding-right: 16px;\n  width: 100%;\n  height: ", "px;\n  background-color: ", ";\n  border-bottom: solid 2px rgba(133, 133, 133, 0.2);\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n  max-width: 1200px;\n  margin-left: auto;\n  margin-right: auto;\n"], ["\n  position: fixed;\n  top: ", ";\n  left: 0;\n  right: 0;\n  transition: top 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: 8px;\n  padding-right: 16px;\n  width: 100%;\n  height: ", "px;\n  background-color: ", ";\n  border-bottom: solid 2px rgba(133, 133, 133, 0.2);\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n  max-width: 1200px;\n  margin-left: auto;\n  margin-right: auto;\n"])), function (_a) {
+var StyledNav = styled.nav(templateObject_2$e || (templateObject_2$e = __makeTemplateObject(["\n  position: fixed;\n  top: ", ";\n  left: 0;\n  right: 0;\n  transition: top 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: 8px;\n  padding-right: 16px;\n  width: 100%;\n  height: ", "px;\n  background-color: ", ";\n  border-bottom: solid 2px rgba(133, 133, 133, 0.2);\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n  max-width: 1200px;\n  margin-left: auto;\n  margin-right: auto;\n"], ["\n  position: fixed;\n  top: ", ";\n  left: 0;\n  right: 0;\n  transition: top 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: 8px;\n  padding-right: 16px;\n  width: 100%;\n  height: ", "px;\n  background-color: ", ";\n  border-bottom: solid 2px rgba(133, 133, 133, 0.2);\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n  max-width: 1200px;\n  margin-left: auto;\n  margin-right: auto;\n"])), function (_a) {
     var showMenu = _a.showMenu;
     return (showMenu ? 0 : "-" + MENU_HEIGHT + "px");
 }, MENU_HEIGHT, function (_a) {
@@ -2641,7 +2654,7 @@ var Menu = function (_a) {
                 React.createElement(UserBlock$1, { profile: profile, account: account, login: login, logout: logout }))),
         React.createElement(Inner, { isPushed: isPushed, showMenu: showMenu }, children)));
 };
-var templateObject_1$E, templateObject_2$d, templateObject_3$6, templateObject_4$4, templateObject_5$2;
+var templateObject_1$E, templateObject_2$e, templateObject_3$6, templateObject_4$4, templateObject_5$2;
 
 var ToastAction = function (_a) {
     var action = _a.action;
