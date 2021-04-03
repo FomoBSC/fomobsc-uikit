@@ -2396,7 +2396,7 @@ var CopyToClipboard = function (_a) {
 };
 var templateObject_1$C, templateObject_2$c;
 
-styled__default['default'](Button)(templateObject_1$D || (templateObject_1$D = __makeTemplateObject(["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"], ["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"])));
+var StyledButton$1 = styled__default['default'](Button)(templateObject_1$D || (templateObject_1$D = __makeTemplateObject(["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"], ["\n  background: black;\n  color: white !important;\n  border: 1px solid #eeb825;\n"])));
 var StyledInput = styled__default['default'](Input)(templateObject_2$d || (templateObject_2$d = __makeTemplateObject(["\n  background: black;\n  color: white;\n  font-size: 14px;\n  height: 35px;\n  padding-right: 16px;\n  padding-left: 16px;\n  margin-bottom: 16px;\n  border: 2.5px solid #EEB825 !important;\n  boxShadow: none;\n  ::placeholder {\n    color: grey;\n    opacity: 0.75; /* Firefox */\n  }\n\n  :-ms-input-placeholder { /* Internet Explorer 10-11 */\n    color: grey;\n  }\n\n  ::-ms-input-placeholder { /* Microsoft Edge */\n    color: grey;\n  }\n"], ["\n  background: black;\n  color: white;\n  font-size: 14px;\n  height: 35px;\n  padding-right: 16px;\n  padding-left: 16px;\n  margin-bottom: 16px;\n  border: 2.5px solid #EEB825 !important;\n  boxShadow: none;\n  ::placeholder {\n    color: grey;\n    opacity: 0.75; /* Firefox */\n  }\n\n  :-ms-input-placeholder { /* Internet Explorer 10-11 */\n    color: grey;\n  }\n\n  ::-ms-input-placeholder { /* Microsoft Edge */\n    color: grey;\n  }\n"
     /*
       const [affiliate, setAffiliate] = useState(() => {
@@ -2419,16 +2419,60 @@ var AccountModal = function (_a) {
     var account = _a.account, profile = _a.profile, logout = _a.logout, _b = _a.onDismiss, onDismiss = _b === void 0 ? function () { return null; } : _b;
     var _c = React.useState(false); _c[0]; _c[1];
     var title = (profile === null || profile === void 0 ? void 0 : profile.username) === undefined ? "Your Wallet" : profile.username;
-    var _d = React.useState(!profile ? "" : profile.username), username = _d[0], setUsername = _d[1];
-    var _e = React.useState(!profile ? "" : profile.affiliateAddress), affiliate = _e[0], setAffiliate = _e[1];
+    var _d = React.useState(true), first = _d[0], setFirst = _d[1];
+    var _e = React.useState(function () {
+        if ((profile === null || profile === void 0 ? void 0 : profile.username) !== undefined) {
+            return profile.username;
+        }
+        else {
+            var stickyValue = window.localStorage.getItem("FOMO_USER");
+            return stickyValue !== null && stickyValue !== 'null'
+                ? stickyValue
+                : '';
+        }
+    }), username = _e[0], setUsername = _e[1];
+    var _f = React.useState(function () {
+        if ((profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== undefined) {
+            return profile.affiliateAddress;
+        }
+        else {
+            var stickyValue = window.localStorage.getItem("FOMO_AFFILIATE");
+            return stickyValue !== null && stickyValue !== 'null'
+                ? stickyValue
+                : '';
+        }
+    }), affiliate = _f[0], setAffiliate = _f[1];
     var handleUsername = function (e) {
         setUsername(e.currentTarget.value);
-        localStorage.setItem("FOMO_USER", e.currentTarget.value);
+        setFirst(false);
     };
     var handleAffiliate = function (e) {
         setAffiliate(e.currentTarget.value);
-        localStorage.setItem("FOMO_AFFILIATE", e.currentTarget.value);
+        setFirst(false);
     };
+    var usernameLength = username.length > 3 && username.length <= 12;
+    var usernameStart = username.substring(0, 2) !== '0x';
+    var usernameAlphaNum = username.match(/^[0-9a-zA-Z]+$/);
+    var usernameValidation = usernameLength && usernameStart && usernameAlphaNum;
+    // (Web3.utils.isAddress(affiliate) && affiliate !== account) || affiliate === '';
+    // TODO :: check if username exists
+    var affiliateValidation = true;
+    var registerText;
+    if (first) {
+        registerText = 'Save';
+    }
+    else if (!usernameLength) {
+        registerText = 'Username between 4 to 12 characters';
+    }
+    else if (!usernameStart) {
+        registerText = 'Username cannot start with 0x';
+    }
+    else if (!usernameAlphaNum) {
+        registerText = 'Username can only be alpha-numeric';
+    }
+    else {
+        registerText = 'Save';
+    }
     return (React__default['default'].createElement(Modal, { title: title ? title : "Your Wallet", onDismiss: onDismiss },
         React__default['default'].createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Your Address :"),
         React__default['default'].createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, account),
@@ -2439,9 +2483,17 @@ var AccountModal = function (_a) {
         React__default['default'].createElement(StyledInput, { disabled: (profile === null || profile === void 0 ? void 0 : profile.username) !== undefined && (profile === null || profile === void 0 ? void 0 : profile.username) !== "", value: username, placeholder: "Username", onChange: handleUsername }),
         React__default['default'].createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Address :"),
         React__default['default'].createElement(StyledInput, { disabled: (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== undefined && (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== "", value: affiliate, placeholder: "Affiliate Address", onChange: handleAffiliate }),
+        React__default['default'].createElement(Flex, { justifyContent: "center", marginBottom: "16px" },
+            React__default['default'].createElement(Button, { height: "32px", width: "100%", disabled: !usernameValidation || !affiliateValidation, variant: "tertiary", onClick: function () {
+                    localStorage.setItem("FOMO_USER", username);
+                    localStorage.setItem("FOMO_AFFILIATE", affiliate);
+                    onDismiss();
+                } }, registerText)),
         React__default['default'].createElement(Flex, { justifyContent: "center" },
-            React__default['default'].createElement(Button, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
+            React__default['default'].createElement(StyledButton$1, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
                     logout();
+                    localStorage.setItem("FOMO_USER", "");
+                    localStorage.setItem("FOMO_AFFILIATE", "");
                     window.localStorage.removeItem(connectorLocalStorageKey);
                     onDismiss();
                 } }, "Logout"))));
