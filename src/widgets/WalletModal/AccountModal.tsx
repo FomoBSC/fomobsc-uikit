@@ -58,7 +58,7 @@ const StyledInput = styled(Input)`
 
 const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = () => null }) => {
   const [isTooltipDisplayed, setIsTooltipDisplayed] = useState(false);
-  const title = !profile ? "Your Wallet" : profile.username;
+  const title = profile?.username === undefined ? "Your Wallet" : profile.username;
   
   const [username, setUsername] = useState(!profile ? "" : profile.username)
   const [affiliate, setAffiliate] = useState(!profile ? "" : profile.affiliateAddress)
@@ -72,11 +72,6 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
     localStorage.setItem("FOMO_AFFILIATE", e.currentTarget.value);
   }
 
-  console.log(profile)
-  if(profile !== undefined){
-    console.log(profile.username)
-  }
-  console.log(profile && profile.username != "")
   return (
     <Modal title={title ? title : "Your Wallet"} onDismiss={onDismiss}>
       <Text
@@ -106,7 +101,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
       >
         Username :
       </Text>
-      <StyledInput disabled={profile && profile.username != ""} value={username} placeholder="Username" onChange={handleUsername}/>
+      <StyledInput disabled={profile?.username !== undefined && profile?.username !== ""} value={username} placeholder="Username" onChange={handleUsername}/>
       <Text
         fontSize="14px"
         color="white"
@@ -114,7 +109,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
       >
         Affiliate Address :
       </Text>
-      <StyledInput disabled={profile && profile.affiliateAddress != ""} value={affiliate} placeholder="Affiliate Address" onChange={handleAffiliate}/>
+      <StyledInput disabled={profile?.affiliateAddress !== undefined && profile?.affiliateAddress !== ""} value={affiliate} placeholder="Affiliate Address" onChange={handleAffiliate}/>
       { /* profile && profile.affiliateAddress !== undefined && (
         <>
           <Text

@@ -2406,7 +2406,7 @@ var StyledInput = styled(Input)(templateObject_2$d || (templateObject_2$d = __ma
 var AccountModal = function (_a) {
     var account = _a.account, profile = _a.profile, logout = _a.logout, _b = _a.onDismiss, onDismiss = _b === void 0 ? function () { return null; } : _b;
     var _c = useState(false); _c[0]; _c[1];
-    var title = !profile ? "Your Wallet" : profile.username;
+    var title = (profile === null || profile === void 0 ? void 0 : profile.username) === undefined ? "Your Wallet" : profile.username;
     var _d = useState(!profile ? "" : profile.username), username = _d[0], setUsername = _d[1];
     var _e = useState(!profile ? "" : profile.affiliateAddress), affiliate = _e[0], setAffiliate = _e[1];
     var handleUsername = function (e) {
@@ -2417,11 +2417,6 @@ var AccountModal = function (_a) {
         setAffiliate(e.currentTarget.value);
         localStorage.setItem("FOMO_AFFILIATE", e.currentTarget.value);
     };
-    console.log(profile);
-    if (profile !== undefined) {
-        console.log(profile.username);
-    }
-    console.log(profile && profile.username != "");
     return (React.createElement(Modal, { title: title ? title : "Your Wallet", onDismiss: onDismiss },
         React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Your Address :"),
         React.createElement(Text, { fontSize: "16px", color: "tertiary", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, account),
@@ -2429,9 +2424,9 @@ var AccountModal = function (_a) {
             React.createElement(LinkExternal, { fontSize: "12px", small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
             React.createElement(CopyToClipboard, { toCopy: "fomobsc.com?affiliate=" + account }, "Copy Affiliate Link")),
         React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Username :"),
-        React.createElement(StyledInput, { disabled: profile && profile.username != "", value: username, placeholder: "Username", onChange: handleUsername }),
+        React.createElement(StyledInput, { disabled: (profile === null || profile === void 0 ? void 0 : profile.username) !== undefined && (profile === null || profile === void 0 ? void 0 : profile.username) !== "", value: username, placeholder: "Username", onChange: handleUsername }),
         React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Address :"),
-        React.createElement(StyledInput, { disabled: profile && profile.affiliateAddress != "", value: affiliate, placeholder: "Affiliate Address", onChange: handleAffiliate }),
+        React.createElement(StyledInput, { disabled: (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== undefined && (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== "", value: affiliate, placeholder: "Affiliate Address", onChange: handleAffiliate }),
         React.createElement(Flex, { justifyContent: "center" },
             React.createElement(Button, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
                     logout();
