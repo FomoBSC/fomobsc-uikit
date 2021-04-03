@@ -59,17 +59,60 @@ const StyledInput = styled(Input)`
 const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = () => null }) => {
   const [isTooltipDisplayed, setIsTooltipDisplayed] = useState(false);
   const title = profile?.username === undefined ? "Your Wallet" : profile.username;
-  
-  const [username, setUsername] = useState(!profile ? "" : profile.username)
-  const [affiliate, setAffiliate] = useState(!profile ? "" : profile.affiliateAddress)
+  const [first, setFirst] = useState(true)
+  const [username, setUsername] = useState(
+    () => {
+      if(profile?.username !== undefined){
+        return profile.username;
+      } else {
+        const stickyValue = window.localStorage.getItem("FOMO_USER");
+        return stickyValue !== null && stickyValue !== 'null'
+          ? stickyValue
+          : '';
+      }
+    })
+  const [affiliate, setAffiliate] = useState(
+    () => {
+      if(profile?.affiliateAddress !== undefined){
+        return profile.affiliateAddress;
+      } else {
+        const stickyValue = window.localStorage.getItem("FOMO_AFFILIATE");
+        return stickyValue !== null && stickyValue !== 'null'
+          ? stickyValue
+          : '';
+      }
+    })
 
   const handleUsername = (e: React.FormEvent<HTMLInputElement>) => {
     setUsername(e.currentTarget.value)
-    localStorage.setItem("FOMO_USER", e.currentTarget.value);
+    setFirst(false)
   }
+
   const handleAffiliate = (e: React.FormEvent<HTMLInputElement>) => {
     setAffiliate(e.currentTarget.value)
-    localStorage.setItem("FOMO_AFFILIATE", e.currentTarget.value);
+    setFirst(false)
+  }
+  
+  const usernameLength = username.length > 3 && username.length <= 12;
+  const usernameStart = username.substring(0, 2) !== '0x';
+  const usernameAlphaNum = username.match(/^[0-9a-zA-Z]+$/);
+  const usernameValidation = usernameLength && usernameStart && usernameAlphaNum;
+  // (Web3.utils.isAddress(affiliate) && affiliate !== account) || affiliate === '';
+  // TODO :: check if username exists
+  const affiliateValidation = true;
+  let registerText;
+  if (first){
+    registerText = 'Save';
+  } else if (!usernameLength) {
+    registerText = 'Username between 4 to 12 characters';
+  } else if (!usernameStart) {
+    registerText = 'Username cannot start with 0x';
+  } else if (!usernameAlphaNum) {
+    registerText = 'Username can only be alpha-numeric';
+  } else if (!affiliateValidation) { 
+    registerText = 'Affiliate address invalid';
+  } else {
+    registerText = 'Save';
   }
 
   return (
@@ -150,19 +193,37 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
           </Flex>
         </>
       ) */ }
-      <Flex justifyContent="center">
+
+      <Flex justifyContent="center" marginBottom="16px">
         <Button
+          height="32px"
+          width="100%"
+          disabled={!usernameValidation || !affiliateValidation}
+          variant="tertiary"
+          onClick={() => {
+            localStorage.setItem("FOMO_USER", username);
+            localStorage.setItem("FOMO_AFFILIATE", affiliate);
+            onDismiss();
+          }}
+        >
+          {registerText}
+        </Button>
+      </Flex>
+      <Flex justifyContent="center">
+        <StyledButton
           height="32px"
           width="100%"
           variant="tertiary"
           onClick={() => {
             logout();
+            localStorage.setItem("FOMO_USER", "");
+            localStorage.setItem("FOMO_AFFILIATE", "");
             window.localStorage.removeItem(connectorLocalStorageKey);
             onDismiss();
           }}
         >
           Logout
-        </Button>
+        </StyledButton>
       </Flex>
     </Modal>
   );
