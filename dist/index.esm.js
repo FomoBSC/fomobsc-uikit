@@ -2413,14 +2413,14 @@ var AccountModal = function (_a) {
             return profile.username;
         }
         else {
-            var stickyValue = window.localStorage.getItem("FOMO_USER");
+            var stickyValue = window.localStorage.getItem(account);
             return stickyValue !== null && stickyValue !== 'null'
                 ? stickyValue
                 : '';
         }
     }), username = _e[0], setUsername = _e[1];
     var _f = useState(function () {
-        if ((profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== undefined) {
+        if ((profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== undefined && (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== "0x0000000000000000000000000000000000000000") {
             return profile.affiliateAddress;
         }
         else {
@@ -2473,14 +2473,14 @@ var AccountModal = function (_a) {
         React.createElement(StyledInput, { disabled: (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== undefined && (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== "", value: affiliate, placeholder: "Affiliate Address", onChange: handleAffiliate }),
         React.createElement(Flex, { justifyContent: "center", marginBottom: "16px" },
             React.createElement(Button, { height: "32px", width: "100%", disabled: !usernameValidation || !affiliateValidation, variant: "tertiary", onClick: function () {
-                    localStorage.setItem("FOMO_USER", username);
+                    localStorage.setItem(account, username);
                     localStorage.setItem("FOMO_AFFILIATE", affiliate);
                     onDismiss();
                 } }, registerText)),
         React.createElement(Flex, { justifyContent: "center" },
             React.createElement(StyledButton$1, { height: "32px", width: "100%", variant: "tertiary", onClick: function () {
                     logout();
-                    localStorage.setItem("FOMO_USER", "");
+                    localStorage.setItem(account, "");
                     localStorage.setItem("FOMO_AFFILIATE", "");
                     window.localStorage.removeItem(connectorLocalStorageKey);
                     onDismiss();
@@ -2502,6 +2502,9 @@ var UserBlock = function (_a) {
     if (profile && profile.username !== undefined) {
         if (profile.username.length < 9) {
             profileEllipsis = "" + profile.username;
+        }
+        else if (profile.username.length == 0) {
+            profileEllipsis = "Pleb No. " + profile.playerID;
         }
         else {
             profileEllipsis = profile.username.substring(0, 8) + "...";

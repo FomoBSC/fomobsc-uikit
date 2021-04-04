@@ -6,6 +6,7 @@ export interface LangType {
 }
 
 export interface Profile {
+  playerID? : number;
   username?: string;
   affiliateAddress?: string;
   affiliateName?: string;

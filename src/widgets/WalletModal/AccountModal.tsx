@@ -65,7 +65,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
       if(profile?.username !== undefined){
         return profile.username;
       } else {
-        const stickyValue = window.localStorage.getItem("FOMO_USER");
+        const stickyValue = window.localStorage.getItem(account);
         return stickyValue !== null && stickyValue !== 'null'
           ? stickyValue
           : '';
@@ -73,7 +73,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
     })
   const [affiliate, setAffiliate] = useState(
     () => {
-      if(profile?.affiliateAddress !== undefined){
+      if(profile?.affiliateAddress !== undefined && profile?.affiliateAddress !== "0x0000000000000000000000000000000000000000"){
         return profile.affiliateAddress;
       } else {
         const stickyValue = window.localStorage.getItem("FOMO_AFFILIATE");
@@ -201,7 +201,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
           disabled={!usernameValidation || !affiliateValidation}
           variant="tertiary"
           onClick={() => {
-            localStorage.setItem("FOMO_USER", username);
+            localStorage.setItem(account, username);
             localStorage.setItem("FOMO_AFFILIATE", affiliate);
             onDismiss();
           }}
@@ -216,7 +216,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
           variant="tertiary"
           onClick={() => {
             logout();
-            localStorage.setItem("FOMO_USER", "");
+            localStorage.setItem(account, "");
             localStorage.setItem("FOMO_AFFILIATE", "");
             window.localStorage.removeItem(connectorLocalStorageKey);
             onDismiss();

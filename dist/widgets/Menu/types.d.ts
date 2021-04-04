@@ -4,6 +4,7 @@ export interface LangType {
     language: string;
 }
 export interface Profile {
+    playerID?: number;
     username?: string;
     affiliateAddress?: string;
     affiliateName?: string;
