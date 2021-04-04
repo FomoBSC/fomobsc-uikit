@@ -2470,7 +2470,7 @@ var AccountModal = function (_a) {
         React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Username :"),
         React.createElement(StyledInput, { disabled: (profile === null || profile === void 0 ? void 0 : profile.username) !== undefined && (profile === null || profile === void 0 ? void 0 : profile.username) !== "", value: username, placeholder: "Username", onChange: handleUsername }),
         React.createElement(Text, { fontSize: "14px", color: "white", style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, "Affiliate Address :"),
-        React.createElement(StyledInput, { disabled: (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== undefined && (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== "", value: affiliate, placeholder: "Affiliate Address", onChange: handleAffiliate }),
+        React.createElement(StyledInput, { disabled: (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== undefined && (profile === null || profile === void 0 ? void 0 : profile.affiliateAddress) !== "0x0000000000000000000000000000000000000000", value: affiliate, placeholder: "Affiliate Address", onChange: handleAffiliate }),
         React.createElement(Flex, { justifyContent: "center", marginBottom: "16px" },
             React.createElement(Button, { height: "32px", width: "100%", disabled: !usernameValidation || !affiliateValidation, variant: "tertiary", onClick: function () {
                     localStorage.setItem(account, username);
@@ -2500,11 +2500,11 @@ var UserBlock = function (_a) {
     var accountEllipsis = account ? account.substring(0, 4) + "..." + account.substring(account.length - 4) : null;
     var profileEllipsis = accountEllipsis;
     if (profile && profile.username !== undefined) {
-        if (profile.username.length < 9) {
-            profileEllipsis = "" + profile.username;
-        }
-        else if (profile.username.length == 0) {
+        if (profile.username.length == 0) {
             profileEllipsis = "Pleb No. " + profile.playerID;
+        }
+        else if (profile.username.length < 9) {
+            profileEllipsis = "" + profile.username;
         }
         else {
             profileEllipsis = profile.username.substring(0, 8) + "...";

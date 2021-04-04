@@ -16,10 +16,10 @@ const UserBlock: React.FC<Props> = ({ profile, account, login, logout }) => {
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null;
   let profileEllipsis = accountEllipsis;
   if(profile && profile.username !== undefined){
-    if(profile.username.length < 9){
-      profileEllipsis = `${profile.username}`;
-    } else if(profile.username.length == 0){
+    if(profile.username.length == 0){
       profileEllipsis = `Pleb No. ${profile.playerID}`;
+    } else if(profile.username.length < 9){
+      profileEllipsis = `${profile.username}`;
     } else {
       profileEllipsis = `${profile.username.substring(0, 8)}...`;
     }

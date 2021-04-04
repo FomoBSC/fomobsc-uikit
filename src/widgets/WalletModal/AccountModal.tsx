@@ -152,7 +152,7 @@ const AccountModal: React.FC<Props> = ({ account, profile, logout, onDismiss = (
       >
         Affiliate Address :
       </Text>
-      <StyledInput disabled={profile?.affiliateAddress !== undefined && profile?.affiliateAddress !== ""} value={affiliate} placeholder="Affiliate Address" onChange={handleAffiliate}/>
+      <StyledInput disabled={profile?.affiliateAddress !== undefined && profile?.affiliateAddress !== "0x0000000000000000000000000000000000000000"} value={affiliate} placeholder="Affiliate Address" onChange={handleAffiliate}/>
       { /* profile && profile.affiliateAddress !== undefined && (
         <>
           <Text
